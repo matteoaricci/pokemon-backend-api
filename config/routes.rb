@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :pokemons
   resources :moves
+
+  get '/pokemon/:id/moves', to: 'pokemons#moveset'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
