@@ -4,28 +4,28 @@ PokemonMove.destroy_all
 
 
 
-i = 1
+# i = 1
 
-while i <= 251
-    current_poke = Pokemon.find(i)
-    move_arr = []
-    fetch_poke_moves = PokeApi.get(pokemon: current_poke.name).moves
-    fetch_poke_moves.each do |mov|
-        mov.version_group_details.each do |thing|
-             if thing.version_group.name == 'gold-silver' || thing.version_group.name == 'crystal' || thing.version_group.name == 'red-blue' || thing.version_group.name == 'yellow'
-                move_arr.push(mov.move.name)
-             end
-            end
-    end
-    move_arr.uniq.each do |mov|
-        current_poke.id 
-        current_move = Move.find_by(name: mov)
-        PokemonMove.create(pokemon_id: current_poke.id, move_id: current_move.id)
-        pp current_poke.id 
-        pp current_move.id
-    end
-    i += 1
-end
+# while i <= 251
+#     current_poke = Pokemon.find(i)
+#     move_arr = []
+#     fetch_poke_moves = PokeApi.get(pokemon: current_poke.name).moves
+#     fetch_poke_moves.each do |mov|
+#         mov.version_group_details.each do |thing|
+#              if thing.version_group.name == 'gold-silver' || thing.version_group.name == 'crystal' || thing.version_group.name == 'red-blue' || thing.version_group.name == 'yellow'
+#                 move_arr.push(mov.move.name)
+#              end
+#             end
+#     end
+#     move_arr.uniq.each do |mov|
+#         current_poke.id 
+#         current_move = Move.find_by(name: mov)
+#         PokemonMove.create(pokemon_id: current_poke.id, move_id: current_move.id)
+#         pp current_poke.id 
+#         pp current_move.id
+#     end
+#     i += 1
+# end
 
 
 

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  resources :rooms
+  mount ActionCable.server => '/cable'
+
   resources :user_teams
   resources :pokemon_teams
   resources :pokemon_moves
