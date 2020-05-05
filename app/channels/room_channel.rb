@@ -5,8 +5,10 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    room = Room.find(data["id"])
-    room.update(room_id: data["number"])
+    # room = Room.find(data["id"])
+    # room.update(room_id: data["number"])
+    trainer_name = User.find(data['id']).trainer_name
+    data['t_name'] = trainer_name
     ActionCable.server.broadcast("room#{params[:room]}", data)
   end
 

@@ -11,6 +11,12 @@ class PokemonTeamsController < ApplicationController
         render json: new_team
     end
 
+    def show
+        pokemon_team = PokemonTeam.find(params[:id])
+        
+        render json: pokemon_team
+    end
+
     private
 
     def pokemon_teams_params 

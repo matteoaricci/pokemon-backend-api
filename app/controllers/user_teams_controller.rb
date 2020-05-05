@@ -11,6 +11,16 @@ class UserTeamsController < ApplicationController
         render json: u_team.id
     end
 
+    def show
+        user = User.find(params[:id])
+        u_team = user.user_teams
+        p_team = PokemonTeam.where(user_team_id: u_team.ids)
+        # p_team.each { |pokemon| if pokemon.move1_id != 'null'
+        #     pokemon[:move1] = Move.find_by(id: pokemon.move1_id)
+        # end}
+        render json: {team: u_team, pokemon_on_team: p_team}
+    end
+
     private
 
     def user_team_params

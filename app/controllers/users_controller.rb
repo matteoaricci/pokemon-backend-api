@@ -12,8 +12,16 @@ class UsersController < ApplicationController
         end
     end
 
-    def profile
-        
+    def show
+        user = User.find(params[:id])
+
+        render json: user
+    end
+
+    def show_teams
+        user = User.find(params[:id])
+        user_teams = user.user_teams
+        render json: user_teams, include: :pokemons
     end
 
 

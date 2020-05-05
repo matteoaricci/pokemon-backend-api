@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
 
-  resources :rooms
+  # WebSocket Routes
   mount ActionCable.server => '/cable'
+  resources :rooms
+
+  #Auth Routes
+  resources :sessions, only: [:create]
+  resources :registrations
+  delete :logout, to: 'sessions#logout'
+  get :logged_in, to: 'sessions#logged_in'
 
   resources :user_teams
   resources :pokemon_teams
   resources :pokemon_moves
   resources :users
+    get 'users/:id/teams', to: 'users#show_teams'
   resources :pokemons
   resources :moves
 
